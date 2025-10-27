@@ -75,7 +75,9 @@ app.use('/api/*', async (c, next) => {
     await next();
 });
 
-app.options('/api/*', (c) => c.text('', 204));
+app.options('/api/*', (c) => {
+    return new Response(null, { status: 204 });
+});
 
 // API Routes
 app.get("/api/", (c) => c.json({
